@@ -56,7 +56,6 @@ public class MainApp extends JFrame {
                 s++; //Change suit
             }
         }
-        deck[0].
 
     }
 
