@@ -19,7 +19,7 @@ public class MainApp extends JFrame {
         //FRAME STATS
 
 
-        JLabel[] deck=new JLabel[51];
+        JLabel[] deck=new JLabel[52];
 
 
         int w=0; //Width
@@ -27,36 +27,25 @@ public class MainApp extends JFrame {
         int f=0; //Face
         int s=0; //Suit
 
-        for(int i=0;i<51;i++)
+        for(int i=0;i<=51;i++)
         {
             deck[i]=getImage(w,h,face[f],suit[s]); //Give deck[i] an image
             frame.add(deck[i]); //Add to frame
-            w=w+95; //Shift to right
-            f++; //Move up a value for face
 
-            if(i==12) //Change Spades to Diamonds
+            if(f==12) //Change suit
             {
                 w=0; //Start back at left side of screen
-                f=f-13; //Reset face back to 0
+                f=0; //Reset face back to 0
                 h=h+125; //Lower height to next row
                 s++; //Change suit
             }
-            else if(i==25) //Change Diamonds to Clubs
-            {
-                w=0; //Start back at left side of screen
-                f=f-13; //Reset face back to 0
-                h=h+125; //Lower height to next row
-                s++; //Change suit
+            else {
+                w=w+95; //Shift to right
+                f++; //Move up a value for face
             }
-            else if(i==38) //Change
-            {
-                w=0; //Start back at left side of screen
-                f=f-13; //Reset face back to 0
-                h=h+125; //Lower height to next row
-                s++; //Change suit
-            }
+
         }
-
+        //removeAll(deck);
     }
 
     public JLabel getImage(int width, int height,String value, String suit) {
@@ -73,9 +62,9 @@ public class MainApp extends JFrame {
 
     public void removeAll(JLabel[] deck)
     {
-        for(int i=0;i<51;i++)
+        for(int i=0;i<=51;i++)
         {
-            deck[i].removeAll();
+            deck[i].setIcon(null);
         }
     }
 
