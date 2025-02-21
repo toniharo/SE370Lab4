@@ -2,9 +2,11 @@ package Poker;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class MainApp extends JFrame {
-
     public MainApp() {
 
         String[] face={"ace","2","3","4","5","6","7","8","9","10","jack", "queen","king"};
@@ -15,8 +17,11 @@ public class MainApp extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1235,800);
         frame.setVisible(true);
+        JButton shuffleButton = new JButton("Shuffle");
+        frame.add(shuffleButton, BorderLayout.SOUTH);
 
         //FRAME STATS
+
 
 
         JLabel[] deck=new JLabel[52];
@@ -45,6 +50,12 @@ public class MainApp extends JFrame {
             }
 
         }
+
+        //make the button work
+        shuffleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){shuffleDeck(deck);}
+        });
         //removeAll(deck);
     }
 
@@ -70,6 +81,24 @@ public class MainApp extends JFrame {
 
     public static void main(String[] args){
         new MainApp();
+    }
+    public void shuffleDeck(JLabel[] deck) {
+
+        Random rand = new Random();/*
+        //[] deck = new JLabel[0];
+        for (int i = deck.length - 1; i > 0; i--) {
+            int j = rand.nextInt(i + 1); // Get a random index
+
+            // Swap the cards
+            JLabel temp = deck[i];
+            deck[i] = deck[j];
+            deck[j] = temp;
+        }
+
+         */
+        int gone = rand.nextInt(deck.length);
+        deck[gone].setIcon(null);
+
     }
 
 }
